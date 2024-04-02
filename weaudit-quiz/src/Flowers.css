@@ -1,0 +1,15 @@
+.flowers {
+    background-color: #dbdbdb;
+    position: relative;
+    width: 100vw;
+  }
+
+  .flowers .overlap {
+    background-color: #ffffff;
+    height: 1615px;
+    left: 0;
+    position: absolute;
+    top: 358px;
+    width: 1440px;
+  }
+  
