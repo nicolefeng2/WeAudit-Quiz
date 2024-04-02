@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 interface RatingProps {
   updateRating: (value: number) => void;
   // onShowDistribution: () => void;
+  
 }
 
 function Flowers({updateRating}: RatingProps): JSX.Element {
