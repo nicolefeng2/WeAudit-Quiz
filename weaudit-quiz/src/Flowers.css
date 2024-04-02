@@ -238,12 +238,12 @@
   }
   
   .desktop-MBTI-test .submit {
-    height: 88px;
-    left: 1003px;
     position: absolute;
-    top: 1167px;
+    left: 1000px;
     width: 271px;
+    height: 88px;
     padding-bottom: 100px;
+    
   }
   
   .desktop-MBTI-test .submit-box{
@@ -255,6 +255,7 @@
     height: 88px;
     display: flex;
     align-items: center;
+    border: none;
   }
   
   .desktop-MBTI-test .submit-text {
@@ -385,4 +386,18 @@
     border-radius: 50px;
     height: 100px;
     width: 100px;
+  }
+
+  .pictures{
+    padding-top: 50px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .flower{
+    width: 100%;
+    height: auto;
   }

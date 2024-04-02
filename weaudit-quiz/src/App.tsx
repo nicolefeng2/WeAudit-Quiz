@@ -10,6 +10,12 @@ function App() {
     setShowFlowers(true);
   };
 
+  // const [showFlowers, setShowFlowers] = useState(false);
+
+  // const handleShowDistribution = () => {
+  //   setShowDistribution(true);
+  // }
+
   return (
     <div className="App">
       {showFlowers ? <Flowers /> : <Landing onShowFlowers={handleShowFlowers} />}

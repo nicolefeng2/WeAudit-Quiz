@@ -1,14 +1,15 @@
 import "./Flowers.css";
 import whiteArrow from './assets/white_arrow.svg'
-import navBar from './assets/navbar.png'
+import flower from './assets/flower.png'
 import { useEffect } from 'react';
 import React, { useState } from 'react';
 
 interface RatingProps {
   updateRating: (value: number) => void;
+  // onShowDistribution: () => void;
 }
 
-function Flowers({ updateRating }: RatingProps): JSX.Element {
+function Flowers({updateRating}: RatingProps): JSX.Element {
     useEffect(() => {
         window.scrollTo(0, 0); // Scroll to the top of the page
       }, []);
@@ -19,6 +20,12 @@ function Flowers({ updateRating }: RatingProps): JSX.Element {
       setSelectedRating(value);
       updateRating(value);
     };
+
+    // const [showDistribution, setShowDistribution] = useState(false)
+
+    // const handleSubmitClick = () => {
+    //   setShowDistribution(true);
+    // }
     
     return (
         <div className="desktop-MBTI-test">
@@ -46,7 +53,7 @@ function Flowers({ updateRating }: RatingProps): JSX.Element {
 
 
             <div className="pictures">
-
+            <img src={flower} className="flower" alt="Flower" />
             </div>
 
 
@@ -73,10 +80,11 @@ function Flowers({ updateRating }: RatingProps): JSX.Element {
             </div>
 
             <div className="submit">
-              <div className="submit-box">
+              {/* <button className="submit-box" onClick={onShowDistribution}> */}
+              <button className="submit-box">
                 <div className="submit-text">Submit</div>
                 <img src={whiteArrow} className="arrow" alt="Arrow" />
-              </div>
+              </button>
             </div>
 
           </div>

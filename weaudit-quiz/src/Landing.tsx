@@ -1,6 +1,5 @@
 import "./Landing.css";
 import whiteArrow from './assets/white_arrow.svg'
-import navBar from './assets/navbar.png'
 import React, { useState } from 'react';
 import Flowers from './Flowers';
 
@@ -9,13 +8,6 @@ interface LandingProps {
 }
 
 function Landing({ onShowFlowers }: LandingProps) {
-  
-  const [showFlowers, setShowFlowers] = useState(false)
-
-  const handleButtonClick = () => {
-    setShowFlowers(true);
-  }
-
   return (
     <div className="landing">
       <div className="overlap">
