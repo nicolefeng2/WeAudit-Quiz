@@ -1,5 +1,6 @@
 import "./Landing.css";
 import whiteArrow from './assets/white_arrow.svg'
+import navBar from './assets/navbar.png'
 import React, { useState } from 'react';
 import Flowers from './Flowers';
 
@@ -22,7 +23,7 @@ function Landing({ onShowFlowers }: LandingProps) {
         <div className="start-quiz">
           <button className="start-box" onClick={onShowFlowers}>
             <div className="start-text">Start the quiz</div>
-            <img src={whiteArrow} className="larrow" alt="Arrow" />
+            <img src={whiteArrow} className="arrow" alt="Arrow" />
           </button>
         </div>
 
@@ -126,12 +127,16 @@ function Landing({ onShowFlowers }: LandingProps) {
         </div>
       
       </div>
+
+      {/* <img src={navBar} className="navBar" alt="nav" /> */}
+
       <div className="banner">
         <div className="landing-header">
             <p className="how-biased-is-AI">How Biased is AI?</p>
             <p className="take-quiz">Take the quiz and find out!</p>
         </div>
       </div>
+      
 
     </div>
   )
