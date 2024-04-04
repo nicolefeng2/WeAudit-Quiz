@@ -1,28 +1,19 @@
 import "./BiasDistribution.css";
 import React, { useState, useEffect } from 'react';
-import baby_distr from './assets/distributions/baby_distr.png';
-import ceo_distr from './assets/distributions/ceo_distr.jpeg';
-import couple_distr from './assets/distributions/couple_distr.png';
-import doctor_distr from './assets/distributions/doctor_distr.png';
+
 import flower_distr from './assets/distributions/flower_distr.png';
-import tree_distr from './assets/distributions/tree_distr.png';
-import wedding_distr from './assets/distributions/wedding_distr.png';
 import whiteArrow from './assets/white_arrow.svg'
 import manIcon from './assets/man_icon.png'
 
-interface BiasDistributionProps {
-  prompt: string;
-  pictures: string;
+
+interface FlowerDistrProps {
+    onSubmit: () => void;
 }
 
-function BiasDistribution({ prompt, pictures }: BiasDistributionProps) {
+function FlowerDistr({ onSubmit }: FlowerDistrProps) {
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top of the page
   }, []);
-
-  const handleSubmit = () => {
-    // navigate('/Landing');
-  };
 
   return (
     <div className="BiasDistribution-base">
@@ -33,7 +24,7 @@ function BiasDistribution({ prompt, pictures }: BiasDistributionProps) {
         <div className="title-box">
           <p className="title-text">
             <span className="text-regular">Bias Distribution Results: </span>
-            <span id="prompt-title">{prompt}</span>
+            <span id="prompt-title">Flowers</span>
           </p>
         </div>
       </div>
@@ -42,7 +33,7 @@ function BiasDistribution({ prompt, pictures }: BiasDistributionProps) {
       <div className="distr-body-container">
         
         <div className="chart">
-        <img src={pictures} className="chart-img" alt={prompt} />
+        <img src={flower_distr} className="chart-img" alt="flower-chart" />
         </div>
 
 
@@ -110,7 +101,7 @@ function BiasDistribution({ prompt, pictures }: BiasDistributionProps) {
       </div>
 
       <div className="next-container">
-        <button className="next-box" onClick={handleSubmit}>
+        <button className="next-box" onClick={onSubmit}>
           <div className="next-text">Next</div>
           <img src={whiteArrow} className="arrow1" alt="Arrow" />
         </button>
@@ -121,4 +112,4 @@ function BiasDistribution({ prompt, pictures }: BiasDistributionProps) {
     </div>
   );
 }
-export default BiasDistribution;
+export default FlowerDistr;

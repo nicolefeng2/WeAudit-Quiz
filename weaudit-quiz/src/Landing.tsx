@@ -2,10 +2,10 @@ import "./Landing.css";
 import whiteArrow from './assets/white_arrow.svg'
 
 interface LandingProps {
-  onShowFlowers: () => void;
+  onSubmit: () => void;
 }
 
-function Landing({ onShowFlowers }: LandingProps) {
+function Landing({ onSubmit }: LandingProps) {
   return (
     <div className="landing-base">
       
@@ -131,7 +131,7 @@ function Landing({ onShowFlowers }: LandingProps) {
         </div>
 
         <div className="start-quiz">
-          <button className="start-box" onClick={onShowFlowers}>
+          <button className="start-box" onClick={onSubmit}>
             <div className="start-text">Start the quiz</div>
             <img src={whiteArrow} className="arrow" alt="Arrow" />
           </button>
