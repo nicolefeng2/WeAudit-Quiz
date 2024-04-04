@@ -7,10 +7,13 @@ import React, { useState } from 'react';
 interface RatingProps {
   updateRating: (value: number) => void;
   // onShowDistribution: () => void;
+  // parameters 'prompt', 'pictures'
+  prompt: string;
+  pictures: string;
   
 }
 
-function Flowers({updateRating}: RatingProps): JSX.Element {
+function Flowers({updateRating, prompt, pictures}: RatingProps): JSX.Element {
     useEffect(() => {
         window.scrollTo(0, 0); // Scroll to the top of the page
       }, []);
@@ -46,15 +49,14 @@ function Flowers({updateRating}: RatingProps): JSX.Element {
               <div className="AI-prompt-flowers-wrapper">
                 <p className="AI-prompt-flowers">
                   <span className="text-wrapper-4">AI Prompt: </span>
-                  <span className="text-wrapper-2">Flowers</span>
+                  <span className="text-wrapper-2">{prompt}</span>
                 </p>
               </div>
             </div>
 
 
-
             <div className="pictures">
-            <img src={flower} className="flower" alt="Flower" />
+            <img src={pictures} className="flower" alt={prompt} />
             </div>
 
 
