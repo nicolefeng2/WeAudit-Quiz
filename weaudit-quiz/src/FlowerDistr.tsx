@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import flower_distr from './assets/distributions/flower_distr.png';
 import whiteArrow from './assets/white_arrow.svg'
 import manIcon from './assets/man_icon.png'
+import Box from './Box'
 
 
 interface FlowerDistrProps {
@@ -14,6 +15,16 @@ function FlowerDistr({ onSubmit }: FlowerDistrProps) {
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top of the page
   }, []);
+
+  let green = '#D6F57B';
+  let yellow = '#F5F17B';
+  let orange = '#FFD6B1';
+  let red = '#FFB1B1';
+  let darkGreen = '#43A42B';
+  let darkYellow = '#AAAD0E';
+  let darkOrange = '#FF7629';
+  let darkRed= '#FF4D4D';
+
 
   return (
     <div className="BiasDistribution-base">
@@ -36,67 +47,65 @@ function FlowerDistr({ onSubmit }: FlowerDistrProps) {
         <img src={flower_distr} className="chart-img" alt="flower-chart" />
         </div>
 
+        <div className="stats-container">
+          
+          
+          <div className="row">
 
-        <div className="top-row-container">
+            <div className="top-row-box">
+              <Box 
+                color={green} 
+                labelColor={darkGreen}
+                rating={'Rating: Totally Un-Harmful'}
+                quote={''}
+                percent={80}
+                yourChoice={true}
+              />
+            </div>
 
-          <div className="green-rectangle">
-            
-            <div className="top-row-green">
-              <div className="green-percent">
-                <p className="percentage"> 80% </p>
-              </div>
-              
-              <div className="your-choice-box">
-                <img src={manIcon} className="man-icon" alt="man"/>
-                <p className="your-choice-text"> Your <br/> Choice</p>
-              </div>
+            <div className="top-row-box">
+              <Box 
+                color={yellow} 
+                labelColor={darkYellow}
+                rating={'Rating: Very Un-Harmful'}
+                quote={''}
+                percent={9}
+                yourChoice={false}
+              />
             </div>
-            
-            <div className="green-label-box">
-              <p className="bubble-label"> Rating: Totally Un-Harmful </p>
-            </div>
+
           </div>
 
-          <div className="yellow-rectangle">
-            <div className="yellow-percent">
-              <p className="percentage"> 9% </p>
+
+          <div className="row">
+
+            <div className="bottom-row-box">
+              <Box 
+                color={orange} 
+                labelColor={darkOrange}
+                rating={'Rating: Somewhat Un-Harmful'}
+                quote={'“I think this is unharmful, but this lacks depth and only shows certain flowers, not enough.”'}
+                percent={0}
+                yourChoice={false}
+              />
             </div>
-            <div className="yellow-label-box">
-              <p className="bubble-label"> Rating: Very Un-Harmful </p>
+
+            <div className="bottom-row-box">
+              <Box 
+                color={red} 
+                labelColor={darkRed}
+                rating={'Rating: Very Harmful'}
+                quote={'“I perceive flowers in a vase as part of a advertising scheme. I think it is wrong that simply images of flowers didn\'t come up. Wild flowers is what there should be more of.”'}
+                percent={0}
+                yourChoice={false}
+              />
             </div>
+
           </div>
 
-        </div>
-
-
-        <div className="bottom-row-container">
-
-          <div className="orange-rectangle">
-            <div className="orange-quote">
-              <p className="quote"> “I think this is unharmful, but this lacks depth and only shows certain flowers, not enough.” </p>
-            </div>
-            <div className="orange-label-box">
-              <p className="bubble-label"> Rating: Somewhat Un-Harmful </p>
-            </div>
-          </div>
-
-          <div className="red-rectangle">
-            <div className="red-quote">
-              <p className="quote"> 
-              “I perceive flowers in a vase as part of a advertising scheme. 
-              I think it is wrong that simply images of flowers didn't come up. 
-              Wild flowers is what there should be more of.” 
-              </p>
-            </div>
-            <div className="red-label-box">
-              <p className="bubble-label"> Rating: Very Harmful </p>
-            </div>
-          </div>
 
         </div>
         
-
-
 
       </div>
 

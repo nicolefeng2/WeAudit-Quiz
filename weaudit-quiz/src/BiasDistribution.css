@@ -80,208 +80,6 @@
   height: auto;
 }
 
-.BiasDistribution-base .top-row-container{
-  display: flex;
-  align-items: center;
-  justify-content:space-between;
-}
-
-.BiasDistribution-base .green-rectangle{
-  background-color: #D6F57B;
-  width: 40%;
-  border-radius: 10px;
-  position: relative;
-  border: none;
-  box-shadow: 0px 4px 4px #00000040;
-}
-
-.BiasDistribution-base .top-row-green{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.BiasDistribution-base .green-percent{
-  margin-left: 5%;
-  margin-top: 2.5%;
-  margin-bottom: 0%;
-}
-
-.BiasDistribution-base .your-choice-box{
-  background-color: white;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  padding: 10px;
-  margin-right: 5%;
-  width: auto;
-}
-
-.your-choice-text{
-  font-family: 'Roboto', Helvetica;
-  font-weight: regular;
-  font-size: 20px;
-  color: black;
-  margin: 0;
-  padding: 0;
-}
-
-.man-icon{
-  width: auto;
-  height: auto;
-  margin-right: 5%;
-}
-
-.BiasDistribution-base .green-label-box{
-  background-color: #3BBF40;
-  width: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 5%;
-}
-
-.BiasDistribution-base .yellow-rectangle{
-  background-color: #F5F17B;
-  width: 40%;
-  border-radius: 10px;
-  position: relative;
-  border: none;
-  box-shadow: 0px 4px 4px #00000040;
-}
-
-.BiasDistribution-base .yellow-percent{
-  margin-left: 5%;
-  margin-top: 2.5%;
-  margin-bottom: 0%;
-}
-
-.BiasDistribution-base .yellow-label-box{
-  background-color: #AAAD0E;
-  width: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 5%;
-}
-
-.percentage{
-  font-family: 'Roboto', Helvetica;
-  font-weight: bold;
-  font-size: 80px;
-  color: #404040;
-  margin: 0;
-  padding: 0;
-}
-.bubble-label{
-  font-family: 'Roboto', Helvetica;
-  font-weight: bold;
-  font-size: 35px;
-  color: white;
-  margin: 0;
-  padding: 10px;
-}
-
-
-.BiasDistribution-base .bottom-row-container{
-  display: flex;
-  align-items: center;
-  justify-content:space-between;
-  margin-top: 2%;
-}
-
-.BiasDistribution-base .orange-rectangle{
-  background-color: #FFD6B1;
-  height: 100%;
-  width: 45%;
-  border-radius: 10px;
-  border: none;
-  box-shadow: 0px 4px 4px #00000040;
-}
-
-.BiasDistribution-base .orange-quote{
-  margin-left: 5%;
-  margin-top: 2.5%;
-  margin-bottom: 0%;
-}
-
-.BiasDistribution-base .orange-label-box{
-  background-color: #FF7629;
-  width: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 5%;
-  margin-top: 12.5%;
-}
-
-.BiasDistribution-base .red-rectangle{
-  background-color: #FFB1B1;
-  height: 100%;
-  width: 54%;
-  border-radius: 10px;
-  position: relative;
-  border: none;
-  box-shadow: 0px 4px 4px #00000040;
-}
-
-.BiasDistribution-base .red-quote{
-  margin-left: 5%;
-  margin-top: 2.5%;
-  margin-bottom: 0%;
-}
-
-.BiasDistribution-base .red-label-box{
-  background-color: #FF4D4D;
-  width: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 5%;
-  margin-top: 4.5%;
-}
-
-.percentage{
-  font-family: 'Roboto', Helvetica;
-  font-weight: bold;
-  font-size: 80px;
-  color: #404040;
-  margin: 0;
-  padding: 0;
-}
-
-.bubble-label{
-  font-family: 'Roboto', Helvetica;
-  font-weight: bold;
-  font-size: 35px;
-  color: white;
-  margin: 0;
-  padding: 10px;
-}
-
-.quote{
-  font-family: 'Roboto', Helvetica;
-  font-weight: bold;
-  font-size: 30px;
-  color: #404040;
-  margin: 0;
-  padding: 10px;
-}
-
-
 .BiasDistribution-base .next-container {
   display: flex;
   margin: 5% 5% 5% 5%;
@@ -314,4 +112,25 @@
 .BiasDistribution-base .arrow1 {
   width: 60px;
   height: auto;
+}
+
+
+.BiasDistribution-base .stats-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.BiasDistribution-base .row{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 2%;
+}
+
+.top-row-box{
+  flex-grow: 0.2;
+}
+.bottom-row-box{
+  width: 49%;
 }

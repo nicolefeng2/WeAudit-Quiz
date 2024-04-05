@@ -3,9 +3,6 @@ import whiteArrow from './assets/white_arrow.svg'
 import { useNavigate } from "react-router-dom";
 
 // starting page
-interface LandingProps {
-  // onSubmit: () => void; remove since using useNavigate
-}
 
 function Landing() {
   // initialize useNavigate
