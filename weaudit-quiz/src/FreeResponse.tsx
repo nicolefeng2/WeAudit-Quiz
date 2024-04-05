@@ -2,14 +2,18 @@ import "./FreeResponse.css";
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-function FreeResponse(){
+interface FreeResponseProps {
+  onSubmit: (value: string) => void;
+}
+
+function FreeResponse({ onSubmit }: FreeResponseProps){
 
   const [inputValue, setInputValue] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault(); // Prevent the default form submission behavior
     // Do something with the submitted value, e.g., send it to an API
-    console.log('Submitted value:', inputValue);
+    onSubmit(inputValue); // Pass the inputValue to the parent component
     // Clear the input after submission
     setInputValue('');
   };
@@ -31,6 +35,7 @@ function FreeResponse(){
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Type your response here..."
           />
+          <button type="submit">Submit</button>
         </form>
       </div>
     </div>

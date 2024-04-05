@@ -1,11 +1,20 @@
 import "./Landing.css";
 import whiteArrow from './assets/white_arrow.svg'
+import { useNavigate } from "react-router-dom";
 
+// starting page
 interface LandingProps {
-  onSubmit: () => void;
+  // onSubmit: () => void; remove since using useNavigate
 }
 
-function Landing({ onSubmit }: LandingProps) {
+function Landing() {
+  // initialize useNavigate
+  const navigate = useNavigate();
+
+  const handleStartQuiz = () => {
+    navigate('/flower'); // navigate to Flower.tsx
+  }
+
   return (
     <div className="landing-base">
       
@@ -131,7 +140,7 @@ function Landing({ onSubmit }: LandingProps) {
         </div>
 
         <div className="start-quiz">
-          <button className="start-box" onClick={onSubmit}>
+          <button className="start-box" onClick={handleStartQuiz}>
             <div className="start-text">Start the quiz</div>
             <img src={whiteArrow} className="arrow" alt="Arrow" />
           </button>

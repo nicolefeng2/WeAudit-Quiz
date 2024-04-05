@@ -2,11 +2,18 @@ import "./Rating.css";
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-function Rating(){
+interface RatingProps {
+  handleRatingClick: (value: number) => void;
+}
+
+function Rating({ handleRatingClick }: RatingProps){
   const [selectedRating, setSelectedRating] = useState<number | null>(null);
-  const handleRatingClick = (value: number) => {
+  
+  const triggerHandleRatingClick = (value: number) => {
     setSelectedRating(value);
+    handleRatingClick(value);
   };
+
   return(
     <div className="rating-container">
           
@@ -15,7 +22,7 @@ function Rating(){
           <span
             key={value}
             className={`circle ${selectedRating === value ? 'selected' : ''}`}
-            onClick={() => handleRatingClick(value)}
+            onClick={() => triggerHandleRatingClick(value)}
           ></span>
         ))}
 

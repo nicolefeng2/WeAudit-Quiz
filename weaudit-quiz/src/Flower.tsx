@@ -17,14 +17,37 @@ function Flower({ onSubmit }: FlowerProps) {
         window.scrollTo(0, 0); // Scroll to the top of the page
       }, []);
     
-    const [showRating, setShowRating] = useState(true);
+    // const [showRating, setShowRating] = useState(true);
+    // Sets the current step on Flower page
+    const [step, setStep] = useState('rating');
+    // store rating value
+    const [ratingAnswer, setRatingAnswer] = useState<number | null>(null);
+    // store free response value
+    const [freeResponseAnswer, setFreeResponseAnswer] = useState<string>('');
+    // initialize useNavigate
+    const navigate = useNavigate();
+    // setting the flow from Rating to FreeResponse
+    const handleNext = () => {
+      if (step === 'rating') {
+        setStep('freeResponse');
+      } else if (step === 'freeResponse') {
+        onSubmit();
+        navigate('/flower-distr');
+      }
+    }
+
+    const handleSubmitRating = (value: number) => {
+      setRatingAnswer(value);
+    }
+
+    const handleSubmitFreeResponse = (value: string) => {
+      setFreeResponseAnswer(value);
+    };
     
     // TODO: fix this -- instead of toggling between rating and free response,
     // want first click on submit to switch to free response, then second click
     // to go to flower distribution page
-    const toggle = () => {
-      setShowRating(!showRating);
-    };
+    // removed toggle function
 
     return (
         <div className="bias-prompt-base">
@@ -47,15 +70,16 @@ function Flower({ onSubmit }: FlowerProps) {
             <img src={flower} className="picture-img" alt="flower" />
             </div>
 
-
-
+            {/* submit function for Rating & FreeResponse 
+            needs to be updated so it stores response correctly */}
             <div className="rating-container">
-              {showRating ? <Rating /> : <FreeResponse />}
+              {step === 'rating' && <Rating handleRatingClick={handleSubmitRating} />}
+              {step === 'freeResponse' && <FreeResponse onSubmit={handleSubmitFreeResponse} />}
             </div>
 
 
             <div className="submit-container">
-              <button className="submit-box" onClick={toggle}>
+              <button className="submit-box" onClick={handleNext}>
                 <div className="submit-text">Submit</div>
                 <img src={whiteArrow} className="arrow" alt="Arrow" />
               </button>
