@@ -17,7 +17,7 @@ function Landing() {
       
       <div className="banner">
         <div className="landing-header">
-          <p className="how-biased-is-AI">How Biased is AI?</p>
+          <p className="how-biased-is-AI">How Biased are You?</p>
           <p className="take-quiz">Take the quiz and find out!</p>
         </div>
       </div>

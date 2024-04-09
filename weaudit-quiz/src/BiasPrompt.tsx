@@ -1,8 +1,10 @@
 import "./BiasPrompt.css";
 import Rating from './Rating'
 import FreeResponse from './FreeResponse'
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+
 import whiteArrow from './assets/white_arrow.svg'
 import baby from './assets/prompts/baby.png';
 import ceo from './assets/prompts/ceo.jpeg';
@@ -14,18 +16,63 @@ import wedding from './assets/prompts/wedding.png';
 
 interface BiasPromptProps {
   prompt: string;
-  pictures: string;
+  onSubmit: () => void;
 }
 
-function BiasPrompt({ prompt, pictures }: BiasPromptProps) {
+function BiasPrompt({ prompt, onSubmit}: BiasPromptProps) {
     useEffect(() => {
         window.scrollTo(0, 0); // Scroll to the top of the page
       }, []);
+    
+    // picture dictionary
+    // EDIT POINT: make sure to add new prompts in here
+    const picDict = {
+      "flower": flower,
+      "tree": tree,
+      "baby": baby,
+      "ceo": ceo,
+      "couple": couple,
+      "wedding": wedding,
+      "doctor": doctor,
+    }
 
-    const [showRating, setShowRating] = useState(true);
+    // title dictionary
+    // EDIT POINT: make sure to add new prompts in here
+    const titles = {
+      "flower": "Flowers",
+      "tree": "Trees",
+      "baby": "Baby",
+      "ceo": "CEO",
+      "couple": "Couples",
+      "wedding": "Wedding",
+      "doctor": "Doctor",
+    }
 
-    const toggle = () => {
-      setShowRating(!showRating);
+
+    // Sets the current step on Flower page
+    const [step, setStep] = useState('rating');
+    // store rating value
+    const [ratingAnswer, setRatingAnswer] = useState<number | null>(null);
+    // store free response value
+    const [freeResponseAnswer, setFreeResponseAnswer] = useState<string>('');
+    // initialize useNavigate
+    const navigate = useNavigate();
+    // setting the flow from Rating to FreeResponse
+    const handleNext = () => {
+      if (step === 'rating') {
+        setStep('freeResponse');
+      } else if (step === 'freeResponse') {
+        onSubmit();
+        navigate(`/${prompt}-distr`);
+      }
+    }
+
+    const handleSubmitRating = (value: number) => {
+      setRatingAnswer(value);
+    }
+
+    const handleSubmitFreeResponse = (value: string) => {
+      setFreeResponseAnswer(value);
     };
 
     return (
@@ -39,26 +86,27 @@ function BiasPrompt({ prompt, pictures }: BiasPromptProps) {
               <div className="AI-prompt-box">
                 <p className="AI-prompt-text">
                   <span className="text-regular">AI Prompt: </span>
-                  <span id="prompt-title">{prompt}</span>
+                  <span id="prompt-title">{titles[prompt]}</span>
                 </p>
               </div>
             </div>
 
 
             <div className="pictures">
-            <img src={pictures} className="picture-img" alt={prompt} />
+            <img src={picDict[prompt]} className="picture-img" alt={prompt} />
             </div>
 
 
 
             <div className="rating-container">
-              {showRating ? <Rating /> : <FreeResponse />}
+              {step === 'rating' && <Rating handleRatingClick={handleSubmitRating} />}
+              {step === 'freeResponse' && <FreeResponse onSubmit={handleSubmitFreeResponse} />}
             </div>
 
 
 
             <div className="submit-container">
-              <button className="submit-box" onClick={toggle}>
+              <button className="submit-box" onClick={handleNext}>
                 <div className="submit-text">Submit</div>
                 <img src={whiteArrow} className="arrow" alt="Arrow" />
               </button>

@@ -22,7 +22,7 @@
 }
 
 .landing-base .banner {
-  background-color: #ffe6d0;
+  background-image:url('./assets/banner_pic.png');
   text-align: center;
   display: flex;
   align-items: center;
@@ -53,6 +53,8 @@
 
 .landing-base .what-is-bias-text {
   font-size: 45px;
+  font-weight: bold;
+  font-style: italic;
   text-align: center;
 }
 

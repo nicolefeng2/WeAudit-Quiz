@@ -1,28 +1,129 @@
 import "./BiasDistribution.css";
+import Box from './Box'
+
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+
+// EDIT POINT: When adding a new prompt, make sure to add import for "{promp}_distr" image
 import baby_distr from './assets/distributions/baby_distr.png';
-import ceo_distr from './assets/distributions/ceo_distr.jpeg';
+import ceo_distr from './assets/distributions/ceo_distr.png';
 import couple_distr from './assets/distributions/couple_distr.png';
 import doctor_distr from './assets/distributions/doctor_distr.png';
 import flower_distr from './assets/distributions/flower_distr.png';
 import tree_distr from './assets/distributions/tree_distr.png';
 import wedding_distr from './assets/distributions/wedding_distr.png';
+
 import whiteArrow from './assets/white_arrow.svg'
-import manIcon from './assets/man_icon.png'
+
+// EDIT POINT: When adding a new prompt, make sure to add import for json input data
+import flowerData from './inputs/flower.json'
+import treeData from './inputs/tree.json'
+import babyData from './inputs/baby.json'
+import ceoData from './inputs/ceo.json'
+import doctorData from './inputs/doctor.json'
+import weddingData from './inputs/wedding.json'
+import coupleData from './inputs/couple.json'
 
 interface BiasDistributionProps {
-  prompt: string;
-  pictures: string;
+  distr: string;
 }
 
-function BiasDistribution({ prompt, pictures }: BiasDistributionProps) {
+function BiasDistribution({ distr }: BiasDistributionProps) {
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top of the page
   }, []);
 
+  // colors dictionary
+  const colorDict = {
+    "green": '#D6F57B',
+    "darkGreen": '#43A42B',
+    "yellow": '#F5F17B',
+    "darkYellow": '#AAAD0E',
+    "orange": '#FFD6B1',
+    "darkOrange": '#FF7629',
+    "red": '#FFB1B1',
+    "darkRed": '#FF4D4D',
+  }
+  // picture dictionary
+  // EDIT POINT: make sure to add new prompts in here
+  const picDict = {
+    "flower": flower_distr,
+    "tree": tree_distr,
+    "baby": baby_distr,
+    "ceo": ceo_distr,
+    "couple": couple_distr,
+    "wedding": wedding_distr,
+    "doctor": doctor_distr,
+  }
+
+   // data dictionary
+   // EDIT POINT: make sure to add new prompts in here
+   const dataDict = {
+    "flower": flowerData,
+    "tree": treeData,
+    "baby": babyData,
+    "ceo": ceoData,
+    "couple": coupleData,
+    "wedding": weddingData,
+    "doctor": doctorData,
+  }
+
+  // next_prompt dictionary
+  // EDIT POINT: make sure to add new prompts in here for flow
+  const nextPromptDict = {
+    "flower": "tree",
+    "tree": "baby",
+    "baby": "ceo",
+    "ceo": "couple",
+    "couple": "wedding",
+    "wedding": "doctor",
+    "doctor": "ending",
+  }
+
+  const { 
+    prompt,
+    picture,
+    topLeftBox: {
+      color: topLeftColor,
+      labelColor: topLeftLabelColor,
+      rating: topLeftRating,
+      quote: topLeftQuote,
+      percent: topLeftPercent,
+      yourChoice: topLeftYourChoice
+    },
+    topRightBox: {
+      color: topRightColor,
+      labelColor: topRightLabelColor,
+      rating: topRightRating,
+      quote: topRightQuote,
+      percent: topRightPercent,
+      yourChoice: topRightYourChoice
+    },
+    bottomLeftBox: {
+      color: bottomLeftColor,
+      labelColor: bottomLeftLabelColor,
+      rating: bottomLeftRating,
+      quote: bottomLeftQuote,
+      percent: bottomLeftPercent,
+      yourChoice: bottomLeftYourChoice
+    },
+    bottomRightBox: {
+      color: bottomRightColor,
+      labelColor: bottomRightLabelColor,
+      rating: bottomRightRating,
+      quote: bottomRightQuote,
+      percent: bottomRightPercent,
+      yourChoice: bottomRightYourChoice
+    }
+  } = dataDict[distr];
+
+
+  // initialize useNavigate
+  const navigate = useNavigate();
+
   const handleSubmit = () => {
-    // navigate('/Landing');
-  };
+    navigate(`/${nextPromptDict[distr]}`); // navigate to next prompt
+  }
 
   return (
     <div className="BiasDistribution-base">
@@ -42,70 +143,68 @@ function BiasDistribution({ prompt, pictures }: BiasDistributionProps) {
       <div className="distr-body-container">
         
         <div className="chart">
-        <img src={pictures} className="chart-img" alt={prompt} />
+        <img src={picDict['tree']} className="chart-img" alt="chart-name" />
         </div>
 
+        <div className="stats-container">
+          
+          
+          <div className="row">
 
-        <div className="top-row-container">
+            <div className="top-row-box">
+              <Box 
+                color={colorDict[topLeftColor]} 
+                labelColor={colorDict[topLeftLabelColor]}
+                rating={topLeftRating}
+                quote={topLeftQuote}
+                percent={topLeftPercent}
+                yourChoice={topLeftYourChoice}
+              />
+            </div>
 
-          <div className="green-rectangle">
-            
-            <div className="top-row-green">
-              <div className="green-percent">
-                <p className="percentage"> 80% </p>
-              </div>
-              
-              <div className="your-choice-box">
-                <img src={manIcon} className="man-icon" alt="man"/>
-                <p className="your-choice-text"> Your <br/> Choice</p>
-              </div>
+            <div className="top-row-box">
+              <Box 
+                color={colorDict[topRightColor]} 
+                labelColor={colorDict[topRightLabelColor]}
+                rating={topRightRating}
+                quote={topRightQuote}
+                percent={topRightPercent}
+                yourChoice={topRightYourChoice}
+              />
             </div>
-            
-            <div className="green-label-box">
-              <p className="bubble-label"> Rating: Totally Un-Harmful </p>
-            </div>
+
           </div>
 
-          <div className="yellow-rectangle">
-            <div className="yellow-percent">
-              <p className="percentage"> 9% </p>
+
+          <div className="row">
+
+            <div className="bottom-row-box">
+              <Box 
+                color={colorDict[bottomLeftColor]} 
+                labelColor={colorDict[bottomLeftLabelColor]}
+                rating={bottomLeftRating}
+                quote={bottomLeftQuote}
+                percent={bottomLeftPercent}
+                yourChoice={bottomLeftYourChoice}
+              />
             </div>
-            <div className="yellow-label-box">
-              <p className="bubble-label"> Rating: Very Un-Harmful </p>
+
+            <div className="bottom-row-box">
+              <Box 
+                color={colorDict[bottomRightColor]} 
+                labelColor={colorDict[bottomRightLabelColor]}
+                rating={bottomRightRating}
+                quote={bottomRightQuote}
+                percent={bottomRightPercent}
+                yourChoice={bottomRightYourChoice}
+              />
             </div>
+
           </div>
 
-        </div>
-
-
-        <div className="bottom-row-container">
-
-          <div className="orange-rectangle">
-            <div className="orange-quote">
-              <p className="quote"> “I think this is unharmful, but this lacks depth and only shows certain flowers, not enough.” </p>
-            </div>
-            <div className="orange-label-box">
-              <p className="bubble-label"> Rating: Somewhat Un-Harmful </p>
-            </div>
-          </div>
-
-          <div className="red-rectangle">
-            <div className="red-quote">
-              <p className="quote"> 
-              “I perceive flowers in a vase as part of a advertising scheme. 
-              I think it is wrong that simply images of flowers didn't come up. 
-              Wild flowers is what there should be more of.” 
-              </p>
-            </div>
-            <div className="red-label-box">
-              <p className="bubble-label"> Rating: Very Harmful </p>
-            </div>
-          </div>
 
         </div>
         
-
-
 
       </div>
 
