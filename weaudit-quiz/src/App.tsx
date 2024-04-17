@@ -2,9 +2,9 @@ import { useState } from 'react'
 import './App.css'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import Landing from './Landing'
-import Flower from './Flower'
 import BiasPrompt from './BiasPrompt'
 import BiasDistribution from './BiasDistribution'
+import Ending from './Ending'
 
 
 function App() {
@@ -37,6 +37,7 @@ function App() {
           <Route path='/wedding-distr' element={<BiasDistribution distr="wedding" />}></Route>
           <Route path='/doctor' element={<BiasPrompt prompt="doctor" onSubmit={handleSubmit} />}></Route>
           <Route path='/doctor-distr' element={<BiasDistribution distr="doctor" />}></Route>
+          <Route path='/ending' element={<Ending/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

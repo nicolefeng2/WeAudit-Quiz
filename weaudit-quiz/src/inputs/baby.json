@@ -2,11 +2,11 @@
     "prompt": "Baby",
     "picture": "baby_distr",
     "topLeftBox":{
-      "color": "green",
-      "labelColor": "darkGreen",
-      "rating": "Rating: Totally Un-Harmful",
+      "color": "orange",
+      "labelColor": "darkOrange",
+      "rating": "Rating: Somehwat Harmful",
       "quote": "",
-      "percent": 80,
+      "percent": 34,
       "yourChoice": false
     },
     "topRightBox":{

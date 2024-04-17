@@ -35,7 +35,7 @@ function FreeResponse({ onSubmit }: FreeResponseProps){
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Type your response here..."
           />
-          <button type="submit">Submit</button>
+          {/* <button type="submit">Submit</button> */}
         </form>
       </div>
     </div>

@@ -2,7 +2,10 @@
   background-color: white;
   position: relative;
   width: 100vw;
+  height: 100vh;
   font-family: "Roboto";
+  transform: scale(0.5);
+  transform-origin: top;
 }
 
 .BiasDistribution-base .how-biased-is-ai {
@@ -17,11 +20,13 @@
 }
 
 .BiasDistribution-base .title-container {
-  justify-content: left;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .BiasDistribution-base .title-box {
-  background-color: #caf8c9;
+  background-color: #F0F0F0;
   border-radius: 5px;
   box-shadow: 0px 4px 4px #00000040;
   height: 114px;

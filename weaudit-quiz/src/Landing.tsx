@@ -32,13 +32,16 @@ function Landing() {
 
       <div className="body-container">
 
-        <div className="bias-definition-container">
-          <div className="bias-definition-box">
-            <p className="bias-text">
+        <div className="generic-bias-container">
+          <div className="generic-bias-text-container">
+            <p className="generic-bias-text">
               <span className="bias-highlight">Bias</span>
             </p>
-            <p className="bias-definition">
-              A systematic discrimination based on the inappropriate use of certain characteristics.
+          </div>
+
+          <div className="generic-bias-definition-container">
+            <p className="generic-bias-definition">
+            A systematic discrimination based on the inappropriate use of certain characteristics.
             </p>
           </div>
         </div>
@@ -132,7 +135,7 @@ function Landing() {
       <div className="bottom-bar">
         <div className="learn-more">
           <div className="learn-more-box">
-            <p className="learn-more-text">Learn more about biases here</p>
+            <p className="learn-more-text">Learn more about <br/>biases here</p>
           </div>
         </div>
 
