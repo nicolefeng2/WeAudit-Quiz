@@ -96,6 +96,8 @@ function BiasPrompt({ prompt, onSubmit}: BiasPromptProps) {
             <img src={picDict[prompt]} className="picture-img" alt={prompt} />
             </div>
 
+            <p className="disclaimer"> Note: The images above are AI-generated.</p>
+
 
 
             <div className="rating-container">

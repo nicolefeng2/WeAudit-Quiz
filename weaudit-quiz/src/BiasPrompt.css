@@ -84,6 +84,12 @@
     width: 100%;
     height: auto;
   }
+
+  .disclaimer{
+    font-size: 30px;
+    font-style: italic;
+    text-align: center;
+  }
   
   .bias-prompt-base .submit-container {
     display: flex;

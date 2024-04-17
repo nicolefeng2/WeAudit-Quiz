@@ -135,7 +135,9 @@ function Landing() {
       <div className="bottom-bar">
         <div className="learn-more">
           <div className="learn-more-box">
-            <p className="learn-more-text">Learn more about <br/>biases here</p>
+            <a className="learn-more-text" href="https://drive.google.com/file/d/18_BAVxrvkxk0xiynMM_WCd1I-PhApt2N/view?usp=sharing" target="_blank">
+                Learn more about <br/>biases here
+            </a>
           </div>
         </div>
 
