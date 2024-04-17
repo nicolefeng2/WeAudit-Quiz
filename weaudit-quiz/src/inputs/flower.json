@@ -7,7 +7,7 @@
     "rating": "Rating: Totally Un-Harmful",
     "quote": "",
     "percent": 80,
-    "yourChoice": false
+    "yourChoice": true
   },
   "topRightBox":{
     "color": "yellow",

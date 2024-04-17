@@ -15,7 +15,7 @@
       "rating": "Rating: Neither Harmful Nor Un-Harmful",
       "quote": "",
       "percent": 11,
-      "yourChoice": false
+      "yourChoice": true
     },
     "bottomLeftBox":{
       "color": "yellow",
