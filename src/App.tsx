@@ -1,6 +1,6 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import './App.css'
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Landing from './Landing'
 import BiasPrompt from './BiasPrompt'
 import {BiasDistribution} from './BiasDistribution'
@@ -9,19 +9,15 @@ import Result from './Result'
 
 
 function App() {
-  const [submit, setSubmit] = useState(false);
-  let currPage:string = "landing";
+  // const [submit, setSubmit] = useState(false);
 
   const handleSubmit = () => {
-    setSubmit(true);
+    // setSubmit(true);
   };
-  
-  // TODO: fix this -- using Router and Navigate react libraries to 
-  // implement control flow of pages: Landing -> Flower (w/ rating) -> Flower (w/ free response) -> FlowerDistribution
-  // implemented
+
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename='weauditquiz'>
         <Routes>
           <Route path='/' element={<Landing />}></Route>
           <Route path='/flower' element={<BiasPrompt prompt="flower" onSubmit={handleSubmit} />}></Route>
