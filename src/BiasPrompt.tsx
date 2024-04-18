@@ -86,14 +86,14 @@ function BiasPrompt({ prompt, onSubmit}: BiasPromptProps) {
               <div className="AI-prompt-box">
                 <p className="AI-prompt-text">
                   <span className="text-regular">AI Prompt: </span>
-                  <span id="prompt-title">{titles[prompt]}</span>
+                  <span id="prompt-title">{titles[prompt as keyof typeof titles]}</span>
                 </p>
               </div>
             </div>
 
 
             <div className="pictures">
-            <img src={picDict[prompt]} className="picture-img" alt={prompt} />
+            <img src={picDict[prompt as keyof typeof picDict]} className="picture-img" alt={prompt} />
             </div>
 
             <p className="disclaimer"> Note: The images above are AI-generated.</p>

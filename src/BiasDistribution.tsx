@@ -117,7 +117,7 @@ function DistrBody({ distr, button }: BiasDistributionProps){
       percent: bottomRightPercent,
       yourChoice: bottomRightYourChoice
     }
-  } = dataDict[distr];
+  } = dataDict[distr as keyof typeof dataDict];
 
   return(
       <div className="DistrBody-base">
@@ -130,18 +130,18 @@ function DistrBody({ distr, button }: BiasDistributionProps){
           </div>
         </div>
         <div className="pictures">
-          {!button && <img src={picDict[distr]} className="picture-img" alt={prompt} />}
+          {!button && <img src={picDict[distr as keyof typeof picDict]} className="picture-img" alt={prompt} />}
         </div>
         <div className="distr-body-container">
           <div className="chart">
-            <img src={chartDict[distr]} className="chart-img" alt="chart-name" />
+            <img src={chartDict[distr as keyof typeof chartDict]} className="chart-img" alt="chart-name" />
           </div>
           <div className="stats-container">
             <div className="row">
               <div className="top-row-box">
                 <Box 
-                  color={colorDict[topLeftColor]} 
-                  labelColor={colorDict[topLeftLabelColor]}
+                  color={colorDict[topLeftColor as keyof typeof colorDict]} 
+                  labelColor={colorDict[topLeftLabelColor as keyof typeof colorDict]}
                   rating={topLeftRating}
                   quote={topLeftQuote}
                   percent={topLeftPercent}
@@ -150,8 +150,8 @@ function DistrBody({ distr, button }: BiasDistributionProps){
               </div>
               <div className="top-row-box">
                 <Box 
-                  color={colorDict[topRightColor]} 
-                  labelColor={colorDict[topRightLabelColor]}
+                  color={colorDict[topRightColor as keyof typeof colorDict]} 
+                  labelColor={colorDict[topRightLabelColor as keyof typeof colorDict]}
                   rating={topRightRating}
                   quote={topRightQuote}
                   percent={topRightPercent}
@@ -162,8 +162,8 @@ function DistrBody({ distr, button }: BiasDistributionProps){
             <div className="row">
               <div className="bottom-row-box">
                 <Box 
-                  color={colorDict[bottomLeftColor]} 
-                  labelColor={colorDict[bottomLeftLabelColor]}
+                  color={colorDict[bottomLeftColor as keyof typeof colorDict]} 
+                  labelColor={colorDict[bottomLeftLabelColor as keyof typeof colorDict]}
                   rating={bottomLeftRating}
                   quote={bottomLeftQuote}
                   percent={bottomLeftPercent}
@@ -172,8 +172,8 @@ function DistrBody({ distr, button }: BiasDistributionProps){
               </div>
               <div className="bottom-row-box">
                 <Box 
-                  color={colorDict[bottomRightColor]} 
-                  labelColor={colorDict[bottomRightLabelColor]}
+                  color={colorDict[bottomRightColor as keyof typeof colorDict]} 
+                  labelColor={colorDict[bottomRightLabelColor as keyof typeof colorDict]}
                   rating={bottomRightRating}
                   quote={bottomRightQuote}
                   percent={bottomRightPercent}
@@ -209,7 +209,7 @@ function BiasDistribution({ distr, button }: BiasDistributionProps) {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    navigate(`/${nextPromptDict[distr]}`); // navigate to next prompt
+    navigate(`/${nextPromptDict[distr as keyof typeof nextPromptDict]}`); // navigate to next prompt
   }
 
   function NextButton() {
