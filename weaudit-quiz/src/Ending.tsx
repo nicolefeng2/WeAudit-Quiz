@@ -3,8 +3,6 @@ import whiteArrow from './assets/white_arrow.svg'
 import redBanner from './assets/red_banner.png'
 import { useNavigate } from "react-router-dom";
 
-// starting page
-
 function Ending() {
   // initialize useNavigate
   const navigate = useNavigate();
@@ -42,3 +40,4 @@ function Ending() {
   )
 }
 export default Ending
+
