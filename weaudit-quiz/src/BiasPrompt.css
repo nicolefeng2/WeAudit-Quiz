@@ -96,6 +96,7 @@
     margin: 5% 5% 5% 5%;
     justify-content: right;
     align-items: center;
+    padding-bottom: 5%;
   }
   
   .bias-prompt-base .submit-box{

@@ -1,6 +1,7 @@
 import "./Landing.css";
 import whiteArrow from './assets/white_arrow.svg'
 import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
 
 // starting page
 
@@ -12,7 +13,12 @@ function Landing() {
     navigate('/flower'); // navigate to Flower.tsx
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page
+  }, []);
+
   return (
+    
     <div className="landing-base">
       
       <div className="banner">

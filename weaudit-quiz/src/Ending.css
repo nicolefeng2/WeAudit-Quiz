@@ -51,11 +51,11 @@
   font-size: 80px;
 }
 
-.result-quiz{
+.ending-button{
   position: relative;
   padding-left: 75%;
 }
-.result-box {
+.ending-button-box {
   background-color: #107250;
   border-radius: 100px;
   box-shadow: 0px 4px 4px #00000040;
@@ -67,7 +67,7 @@
   padding: 20px 20px 20px 20px;
 }
   
-.result-text {
+.ending-button-text {
   color: #ffffff;
   font-family: "Roboto";
   font-size: 24px;

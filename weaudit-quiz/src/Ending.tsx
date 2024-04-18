@@ -8,7 +8,7 @@ function Ending() {
   const navigate = useNavigate();
 
   const handleSeeResults = () => {
-    navigate('/');
+    navigate('/result');
   }
 
   return (
@@ -26,9 +26,9 @@ function Ending() {
         </div>
       </div>
   
-      <div className="result-quiz">
-        <button className="result-box" onClick={handleSeeResults}>
-          <div className="result-text">See Results</div>
+      <div className="ending-button">
+        <button className="ending-button-box" onClick={handleSeeResults}>
+          <div className="ending-button-text">See Results</div>
           <img src={whiteArrow} className="arrow" alt="Arrow" />
         </button>
       </div>

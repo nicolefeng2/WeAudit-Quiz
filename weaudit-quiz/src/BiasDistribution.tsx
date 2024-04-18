@@ -13,6 +13,14 @@ import flower_distr from './assets/distributions/flower_distr.png';
 import tree_distr from './assets/distributions/tree_distr.png';
 import wedding_distr from './assets/distributions/wedding_distr.png';
 
+import baby from './assets/prompts/baby.png';
+import ceo from './assets/prompts/ceo.jpeg';
+import couple from './assets/prompts/couple.png';
+import doctor from './assets/prompts/doctor.png';
+import flower from './assets/prompts/flower.png';
+import tree from './assets/prompts/tree.png';
+import wedding from './assets/prompts/wedding.png';
+
 import whiteArrow from './assets/white_arrow.svg'
 
 // EDIT POINT: When adding a new prompt, make sure to add import for json input data
@@ -26,13 +34,9 @@ import coupleData from './inputs/couple.json'
 
 interface BiasDistributionProps {
   distr: string;
+  button: boolean;
 }
-
-function BiasDistribution({ distr }: BiasDistributionProps) {
-  useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to the top of the page
-  }, []);
-
+function DistrBody({ distr, button }: BiasDistributionProps){
   // colors dictionary
   const colorDict = {
     "green": '#D6F57B',
@@ -46,7 +50,7 @@ function BiasDistribution({ distr }: BiasDistributionProps) {
   }
   // picture dictionary
   // EDIT POINT: make sure to add new prompts in here
-  const picDict = {
+  const chartDict = {
     "flower": flower_distr,
     "tree": tree_distr,
     "baby": baby_distr,
@@ -56,9 +60,19 @@ function BiasDistribution({ distr }: BiasDistributionProps) {
     "doctor": doctor_distr,
   }
 
-   // data dictionary
-   // EDIT POINT: make sure to add new prompts in here
-   const dataDict = {
+  const picDict = {
+    "flower": flower,
+    "tree": tree,
+    "baby": baby,
+    "ceo": ceo,
+    "couple": couple,
+    "wedding": wedding,
+    "doctor": doctor,
+  }
+
+  // data dictionary
+  // EDIT POINT: make sure to add new prompts in here
+  const dataDict = {
     "flower": flowerData,
     "tree": treeData,
     "baby": babyData,
@@ -66,18 +80,6 @@ function BiasDistribution({ distr }: BiasDistributionProps) {
     "couple": coupleData,
     "wedding": weddingData,
     "doctor": doctorData,
-  }
-
-  // next_prompt dictionary
-  // EDIT POINT: make sure to add new prompts in here for flow
-  const nextPromptDict = {
-    "flower": "tree",
-    "tree": "baby",
-    "baby": "ceo",
-    "ceo": "couple",
-    "couple": "wedding",
-    "wedding": "doctor",
-    "doctor": "ending",
   }
 
   const { 
@@ -117,6 +119,91 @@ function BiasDistribution({ distr }: BiasDistributionProps) {
     }
   } = dataDict[distr];
 
+  return(
+      <div className="DistrBody-base">
+        <div className="title-container">
+          <div className="title-box">
+            <p className="title-text">
+              <span className="text-regular">Bias Distribution Results: </span>
+              <span id="prompt-title">{prompt}</span>
+            </p>
+          </div>
+        </div>
+        <div className="pictures">
+          {!button && <img src={picDict[distr]} className="picture-img" alt={prompt} />}
+        </div>
+        <div className="distr-body-container">
+          <div className="chart">
+            <img src={chartDict[distr]} className="chart-img" alt="chart-name" />
+          </div>
+          <div className="stats-container">
+            <div className="row">
+              <div className="top-row-box">
+                <Box 
+                  color={colorDict[topLeftColor]} 
+                  labelColor={colorDict[topLeftLabelColor]}
+                  rating={topLeftRating}
+                  quote={topLeftQuote}
+                  percent={topLeftPercent}
+                  yourChoice={topLeftYourChoice}
+                />
+              </div>
+              <div className="top-row-box">
+                <Box 
+                  color={colorDict[topRightColor]} 
+                  labelColor={colorDict[topRightLabelColor]}
+                  rating={topRightRating}
+                  quote={topRightQuote}
+                  percent={topRightPercent}
+                  yourChoice={topRightYourChoice}
+                />
+              </div>
+            </div>
+            <div className="row">
+              <div className="bottom-row-box">
+                <Box 
+                  color={colorDict[bottomLeftColor]} 
+                  labelColor={colorDict[bottomLeftLabelColor]}
+                  rating={bottomLeftRating}
+                  quote={bottomLeftQuote}
+                  percent={bottomLeftPercent}
+                  yourChoice={bottomLeftYourChoice}
+                />
+              </div>
+              <div className="bottom-row-box">
+                <Box 
+                  color={colorDict[bottomRightColor]} 
+                  labelColor={colorDict[bottomRightLabelColor]}
+                  rating={bottomRightRating}
+                  quote={bottomRightQuote}
+                  percent={bottomRightPercent}
+                  yourChoice={bottomRightYourChoice}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  );
+}
+export {DistrBody};
+
+function BiasDistribution({ distr, button }: BiasDistributionProps) {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page
+  }, []);
+
+  // next_prompt dictionary
+  // EDIT POINT: make sure to add new prompts in here for flow
+  const nextPromptDict = {
+    "flower": "tree",
+    "tree": "baby",
+    "baby": "ceo",
+    "ceo": "couple",
+    "couple": "wedding",
+    "wedding": "doctor",
+    "doctor": "ending",
+  }
 
   // initialize useNavigate
   const navigate = useNavigate();
@@ -125,99 +212,23 @@ function BiasDistribution({ distr }: BiasDistributionProps) {
     navigate(`/${nextPromptDict[distr]}`); // navigate to next prompt
   }
 
-  return (
-    <div className="BiasDistribution-base">
-      
-      <p className="how-biased-is-ai">Quiz: How Biased is AI?</p>
-
-      <div className="title-container">
-        <div className="title-box">
-          <p className="title-text">
-            <span className="text-regular">Bias Distribution Results: </span>
-            <span id="prompt-title">{prompt}</span>
-          </p>
-        </div>
-      </div>
-
-
-      <div className="distr-body-container">
-        
-        <div className="chart">
-        <img src={picDict['tree']} className="chart-img" alt="chart-name" />
-        </div>
-
-        <div className="stats-container">
-          
-          
-          <div className="row">
-
-            <div className="top-row-box">
-              <Box 
-                color={colorDict[topLeftColor]} 
-                labelColor={colorDict[topLeftLabelColor]}
-                rating={topLeftRating}
-                quote={topLeftQuote}
-                percent={topLeftPercent}
-                yourChoice={topLeftYourChoice}
-              />
-            </div>
-
-            <div className="top-row-box">
-              <Box 
-                color={colorDict[topRightColor]} 
-                labelColor={colorDict[topRightLabelColor]}
-                rating={topRightRating}
-                quote={topRightQuote}
-                percent={topRightPercent}
-                yourChoice={topRightYourChoice}
-              />
-            </div>
-
-          </div>
-
-
-          <div className="row">
-
-            <div className="bottom-row-box">
-              <Box 
-                color={colorDict[bottomLeftColor]} 
-                labelColor={colorDict[bottomLeftLabelColor]}
-                rating={bottomLeftRating}
-                quote={bottomLeftQuote}
-                percent={bottomLeftPercent}
-                yourChoice={bottomLeftYourChoice}
-              />
-            </div>
-
-            <div className="bottom-row-box">
-              <Box 
-                color={colorDict[bottomRightColor]} 
-                labelColor={colorDict[bottomRightLabelColor]}
-                rating={bottomRightRating}
-                quote={bottomRightQuote}
-                percent={bottomRightPercent}
-                yourChoice={bottomRightYourChoice}
-              />
-            </div>
-
-          </div>
-
-
-        </div>
-        
-
-      </div>
-
+  function NextButton() {
+    return(
       <div className="next-container">
         <button className="next-box" onClick={handleSubmit}>
           <div className="next-text">Next</div>
           <img src={whiteArrow} className="arrow1" alt="Arrow" />
         </button>
       </div>
+    );
+  }
 
-      
-
+  return (
+    <div className="BiasDistribution-base">
+      {button && <p className="how-biased-is-ai">Quiz: How Biased is AI?</p>}
+      {<DistrBody distr={distr} button={button}/>}
+      {button && <NextButton/>}
     </div>
   );
 }
-export default BiasDistribution;
+export {BiasDistribution};

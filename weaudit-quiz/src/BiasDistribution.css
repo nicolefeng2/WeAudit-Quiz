@@ -1,3 +1,6 @@
+.DistrBody-base{
+  padding-bottom: 10%;
+}
 .BiasDistribution-base {
   background-color: white;
   position: relative;
@@ -87,7 +90,7 @@
 
 .BiasDistribution-base .next-container {
   display: flex;
-  margin: 5% 5% 5% 5%;
+  margin: -5% 5% 5% 5%;
   justify-content: right;
   align-items: center;
 }
